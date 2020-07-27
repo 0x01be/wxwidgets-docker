@@ -38,3 +38,9 @@ RUN ./configure \
 RUN make
 RUN make install
 
+FROM alpine:3.12.0
+
+COPY --from=builder /opt/wxwidgets/ /opt/wxwidgets/
+
+ENV PATH $PATH:/opt/wxwidgets/bin/
+
