@@ -27,6 +27,9 @@ RUN ./configure \
     --enable-monolithic \
     --prefix=/opt/wxwidgets/ \
     --with-opengl \
+    --enable-gl \
+    --enable-core \
+    --enable-base \
     --enable-aui \
     --enable-adv \
     --enable-net \
