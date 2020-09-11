@@ -1,4 +1,4 @@
-FROM 0x01be/alpine:edge as builder
+FROM alpine as builder
 
 RUN apk add --no-cache --virtual wxwidgets-build-dependencies \
     git \
@@ -31,11 +31,12 @@ RUN ./configure \
     --enable-html \
     --enable-stl \
     --enable-richtext \
-    --without-liblzma
+    --without-liblzma \
+    --with-gtk
 RUN make
 RUN make install
 
-FROM 0x01be/alpine:edge
+FROM alpine
 
 COPY --from=builder /opt/wxwidgets/ /opt/wxwidgets/
 
