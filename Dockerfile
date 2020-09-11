@@ -12,8 +12,7 @@ RUN apk add --no-cache --virtual wxwidgets-build-dependencies \
     libmspack-dev \
     sdl-dev \
     libsm-dev \
-    glew-dev \
-    sdl-dev
+    glew-dev
 
 RUN git clone --depth 1 --branch v3.0.3.1 https://gitlab.com/kicad/code/wxWidgets.git /wxwidgets
 
@@ -26,20 +25,9 @@ RUN ./configure \
     --enable-monolithic \
     --prefix=/opt/wxwidgets/ \
     --with-opengl \
-    --enable-gl \
-    --enable-core \
-    --enable-base \
-    --enable-aui \
-    --enable-adv \
-    --enable-net \
-    --enable-propgrid \
-    --enable-html \
-    --enable-xml \
-    --enable-stl \
-    --enable-stc \
-    --enable-richtext \
-    --without-liblzma \
-    --with-gtk
+    --with-themes \
+    --with-gtk \
+    --enable-all-features
 RUN make
 RUN make install
 
