@@ -28,8 +28,13 @@ RUN ./configure \
     --prefix=/opt/wxwidgets/ \
     --with-opengl \
     --enable-aui \
+    --enable-adv \
+    --enable-net \
+    --enable-propgrid \
     --enable-html \
+    --enable-xml \
     --enable-stl \
+    --enable-stc \
     --enable-richtext \
     --without-liblzma \
     --with-gtk
@@ -41,4 +46,7 @@ FROM alpine
 COPY --from=builder /opt/wxwidgets/ /opt/wxwidgets/
 
 ENV PATH $PATH:/opt/wxwidgets/bin/
+
+RUN apk add --no-cache --virtual wxwidgets-runtime-dependencies \
+    gtk+3.0
 
