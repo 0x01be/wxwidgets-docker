@@ -14,7 +14,8 @@ RUN apk add --no-cache --virtual wxwidgets-build-dependencies \
     libsm-dev \
     glew-dev
 
-RUN git clone --depth 1 --branch v3.0.3.1 https://gitlab.com/kicad/code/wxWidgets.git /wxwidgets
+ENV WXWIDGETS_REVISION master
+RUN git clone --depth 1 --branch ${WXWIDGETS_REVISION} https://gitlab.com/kicad/code/wxWidgets.git /wxwidgets
 
 WORKDIR /wxwidgets
 
